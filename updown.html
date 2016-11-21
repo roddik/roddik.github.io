@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<title>Log keyboard up / down</title>
+</head>
+<style>
+	body {
+		margin: 0;
+	}
+
+	#main {
+		display: table;
+		margin: 60px auto;
+		min-width: 600px;
+	}
+
+	table {
+		font-family: monospace;
+		margin: 0;
+	}
+	
+	table td {
+		min-width: 100px;
+	}
+</style>
+<body>
+<div id="main">
+	<input type="text" name="fasdf" autofocus="autofocus" />
+	<table></table>
+</div>
+<script>
+	var prevat;
+	var main = $('#main');
+	var table = main.find('table');
+
+	function log(e) {
+		console.log(e);
+
+		if (e.type == 'keypress') return;
+
+		if (prevat) {
+			var diff = Date.now() - prevat;
+			var tr = $('<tr>');
+			[e.type, e.key, e.keyCode, "+" + diff].forEach(function(x) {
+				tr.append($('<td>').text(x));
+			});
+			table.append(tr);
+		}
+
+		prevat = Date.now();
+	}
+
+	main.keydown(log).keyup(log).keypress(log);
+</script>
+</body>
+</html>
