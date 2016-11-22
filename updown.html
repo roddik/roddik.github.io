@@ -35,12 +35,6 @@
 	var table = main.find('table');
 	var focus = false;
 
-	$(window).focus(function() {
-		focus = true;
-	}).blur(function() {
-		focus = false;
-	});
-
 	function log(e) {
 		console.log(e);
 
@@ -57,6 +51,14 @@
 
 		prevat = Date.now();
 	}
+
+	$(window).focus(function(e) {
+		focus = true;
+		log(e);
+	}).blur(function(e) {
+		focus = false;
+		log(e);
+	});
 
 	main.keydown(log).keyup(log).keypress(log);
 </script>
