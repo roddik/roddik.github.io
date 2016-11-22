@@ -33,6 +33,13 @@
 	var prevat;
 	var main = $('#main');
 	var table = main.find('table');
+	var focus = false;
+
+	$(window).focus(function() {
+		focus = true;
+	}).blur(function() {
+		focus = false;
+	});
 
 	function log(e) {
 		console.log(e);
@@ -42,7 +49,7 @@
 		if (prevat) {
 			var diff = Date.now() - prevat;
 			var tr = $('<tr>');
-			[e.type, e.key, e.keyCode, "+" + diff].forEach(function(x) {
+			[e.type, e.key, e.keyCode, "+" + diff, focus].forEach(function(x) {
 				tr.append($('<td>').text(x));
 			});
 			table.append(tr);
