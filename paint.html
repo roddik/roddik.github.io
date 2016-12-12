@@ -10,8 +10,16 @@
 	#canvas {
 		position: absolute;
 	}
+
+	#target {
+		position: absolute;
+		top: 400px;
+		left: 400px;
+		z-index: 500;
+	}
 </style>
 <body>
+<input id="target" name="target" />
 <canvas id="canvas" width="100" height="100"></canvas>
 <script>
 	var canvas = document.getElementById('canvas');
