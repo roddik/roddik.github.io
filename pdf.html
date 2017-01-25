@@ -2,7 +2,7 @@
 <head>
 	<title>Different methods of embedding pdf in html</title>
 	<style>
-		iframe, embed, object, #pdfobject {
+		iframe, embed, object, #pdfobject-container {
 			width: 480px;
 			height: 270px;
 			border: none;
@@ -10,32 +10,35 @@
 	</style>
 </head>
 <body>
-	<p>
+	<div>
 		Google viewer
 		<iframe src="https://docs.google.com/gview?url=https://roddik.github.io/example.pdf&embedded=true"></iframe>
-	</p>
+	</div>
 
-	<p>
+	<div>
 		Viewer js
 		<iframe src="/ViewerJS/#/example.pdf" allowfullscreen=""></iframe>
-	</p>
+	</div>
 
-	<p>
+	<div>
 		Embed
 		<embed src="/example.pdf" type='application/pdf'></embed>
-	</p>
+	</div>
 
-	<p>
+	<div>
 		Object
 		<object type="application/pdf" data="/example.pdf?#zoom=85&scrollbar=0&toolbar=0&navpanes=0">
 			<p>Insert your error message here, if the PDF cannot be displayed.</p>
 		</object>
-	</p>
+	</div>
 
-	<p>
+	<div>
 		PDFObject
-		<span id="pdfobject"></span>
-	</p>
+
+		<div id="pdfobject-container">
+			<div id="pdfobject"></div>
+		</div>
+	</div>
 
 	<script src="/js/pdfobject.js"></script>
 	<script>PDFObject.embed("/example.pdf", "#pdfobject");</script>
