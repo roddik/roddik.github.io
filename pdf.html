@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+	<title>Different methods of embedding pdf in html</title>
+	<style>
+		iframe, embed, object, #pdfobject {
+			width: 480px;
+			height: 270px;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+	<p>
+		Google viewer
+		<iframe src="http://docs.google.com/gview?url=https://roddik.github.io/example.pdf&embedded=true"></iframe>
+	</p>
+
+	<p>
+		Viewer js
+		<iframe src="/ViewerJS/#/example.pdf" allowfullscreen=""></iframe>
+	</p>
+
+	<p>
+		Embed
+		<embed src="/example.pdf" type='application/pdf'></embed>
+	</p>
+
+	<p>
+		Object
+		<object type="application/pdf" data="/example.pdf?#zoom=85&scrollbar=0&toolbar=0&navpanes=0">
+			<p>Insert your error message here, if the PDF cannot be displayed.</p>
+		</object>
+	</p>
+
+	<p>
+		PDFObject
+		<span id="pdfobject"></span>
+	</p>
+
+	<script src="/js/pdfobject.js"></script>
+	<script>PDFObject.embed("/example.pdf", "#pdfobject");</script>
+</body>
